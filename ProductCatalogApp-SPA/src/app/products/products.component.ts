@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, interval, Subscription } from 'rxjs';
 import { AlertifyService } from '../_services/alertify.service';
 import { Product } from '../_models/product';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -10,6 +11,7 @@ import { Product } from '../_models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  baseUrl = `${environment.apiUrl}products`;
   products: Product[];
   updateProducts: Subscription;
 
@@ -23,9 +25,8 @@ export class ProductsComponent implements OnInit {
   }
 // TODO: move to productService
   getProducts() {
-    this.http.get<Product[]>(`http://localhost:5000/api/products`)
+    this.http.get<Product[]>(this.baseUrl)
       .subscribe(response => {
-        //console.log("response.length " + response.length);
         if (this.products === undefined) {
           this.products = response;
         }
