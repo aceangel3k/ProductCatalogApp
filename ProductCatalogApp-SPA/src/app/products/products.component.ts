@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    this.updateProducts = interval(1000).subscribe((val) => {
+    this.updateProducts = interval(2000).subscribe((val) => {
       this.getProducts();
     });
   }
