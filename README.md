@@ -6,6 +6,7 @@ This is a Product Catalog SPA using .NET Core and Angular
   - Angular app http://localhost:4200/ (ProductCatalogApp-SPA)
 ```sh
 $ cd ProductCatalogApp-SPA
+$ npm install
 $ ng serve
 ```
   - ASP.NET Core 3 http://localhost:5000/ (ProductCatalogApp.API)
