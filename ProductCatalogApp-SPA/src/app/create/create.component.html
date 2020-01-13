@@ -1,0 +1,66 @@
+<form [formGroup]="createForm" (ngSubmit)="create()" class="container">
+    <h2 class="text-center text-secondary">Add Product</h2>
+    <hr />
+
+    <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            required
+            formControlName="name"
+            placeholder="Name"
+            [ngClass]="{
+                'is-invalid':
+                    createForm.get('name').errors &&
+                    createForm.get('name').touched
+            }"
+        />
+        <div class="invalid-feedback">Please enter product name</div>
+    </div>
+
+    <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            formControlName="description"
+            placeholder="Description (optional)"
+        />
+    </div>
+
+    <div class="form-group">
+      <input
+          type="text"
+          class="form-control"
+          formControlName="photoUrl"
+          placeholder="Photo Url (optional)"
+          [ngClass]="{
+            'is-invalid':
+                createForm.get('photoUrl').errors &&
+                createForm.get('photoUrl').touched
+          }"
+      />
+      <div class="invalid-feedback">Please enter a valid photo Url</div>
+  </div>
+
+    <div class="form-group">
+        <input
+            type="number"
+            class="form-control"
+            required
+            formControlName="quantity"
+            placeholder="Quantity"
+            [ngClass]="{
+              'is-invalid':
+                  createForm.get('quantity').errors &&
+                  createForm.get('quantity').touched
+          }"
+        />
+        <div class="invalid-feedback">Please enter quantity</div>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-success" type="submit">Add Product</button>
+        <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>
+<app-products></app-products>

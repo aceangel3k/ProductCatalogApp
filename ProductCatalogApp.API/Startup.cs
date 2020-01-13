@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,13 @@ namespace ProductCatalogApp.API
         {
             services.AddControllers();
             services.AddCors();
+            services.AddAutoMapper(typeof(ProductRepository).Assembly);
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             
         }
 

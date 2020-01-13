@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, interval, Subscription } from 'rxjs';
+import { AlertifyService } from '../_services/alertify.service';
+import { Product } from '../_models/product';
 
 @Component({
   selector: 'app-products',
@@ -7,20 +10,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  products: any;
+  products: Product[];
+  updateProducts: Subscription;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.getProducts();
+    this.updateProducts = interval(1000).subscribe((val) => {
+      this.getProducts();
+    });
   }
-
+// TODO: move to productService
   getProducts() {
-    this.http.get(`http://localhost:5000/api/products`)
+    this.http.get<Product[]>(`http://localhost:5000/api/products`)
       .subscribe(response => {
-        this.products = response;
+        //console.log("response.length " + response.length);
+        if (this.products === undefined) {
+          this.products = response;
+        }
+        if (this.products.length < response.length) {
+          this.products = response;
+        }
       }, error => {
-        console.log(error);
+        this.alertify.error(error);
       });
   }
 

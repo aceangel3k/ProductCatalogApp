@@ -16,25 +16,25 @@ namespace ProductCatalogApp.API.Data
             Products = new List<Product>();
             Products.Add(new Product
             {
-                Id = 1,
                 Name = "Macbook Pro",
-                Description = "Latest Model of Apple's flagship portable workstation",
+                Description = "Latest Model of Apple's Flagship Portable Workstation",
+                PhotoUrl = "/assets/macbookpro.jpg",
                 Quantity = 7,
                 Created = DateTime.Now
             });
             Products.Add(new Product
             {
-                Id = 1,
-                Name = "Bose Headphones",
-                Description = "Bose famous noise-cancelling headphones",
+                Name = "Bose QuietComfort XX Headphones",
+                Description = "Bose Noise Cancelling Wireless Headphones",
+                PhotoUrl = "/assets/bose-headphones.jpg",
                 Quantity = 50,
                 Created = DateTime.Now
             });
             Products.Add(new Product
             {
-                Id = 1,
-                Name = "Motorola RAZR",
-                Description = "Latest android flip phone",
+                Name = "Motorola Razr",
+                Description = "The Old is New Again",
+                PhotoUrl = "/assets/motorola-razr.png",
                 Quantity = 10,
                 Created = DateTime.Now
             });

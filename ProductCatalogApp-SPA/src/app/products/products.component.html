@@ -1,5 +1,12 @@
-  <ul *ngFor="let product of products">
+<div class="row mr-3 ml-3">
+  <div *ngIf="!products?.length">No Products Available</div>
+  <div *ngFor="let product of products" class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+    <app-product-card [product]="product"></app-product-card>
+  </div>
+</div>
+  
+  <!-- <ul *ngFor="let product of products">
     <li>Name: {{product.name}}</li>
     <li>Description: {{product.description}}</li>
     <li>Quantity: {{product.quantity}}</li>
-  </ul>
+  </ul> -->
