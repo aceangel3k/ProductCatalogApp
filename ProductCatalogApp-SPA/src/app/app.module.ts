@@ -13,6 +13,7 @@ import { ProductService } from './_services/product.service';
 import { appRoutes } from './routes';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { SignalRService } from './_services/signal-r.service';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
    providers: [
       AlertifyService,
       ProductService,
+      SignalRService,
       ErrorInterceptorProvider
    ],
    bootstrap: [
